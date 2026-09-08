@@ -1,5 +1,7 @@
 # Agent Guard Eval
 
+[![CI](https://github.com/Talk2rakesh-1/agent-guard-eval/actions/workflows/ci.yml/badge.svg)](https://github.com/Talk2rakesh-1/agent-guard-eval/actions/workflows/ci.yml)
+
 A local-first FastAPI service and CLI for testing prompt-injection defenses and enforcing least-privilege tool policies in agentic AI systems.
 
 ## Problem and users
