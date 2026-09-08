@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-guard-eval"
+version = "0.1.0"
+description = "Local-first prompt-injection evaluation and tool-policy guardrails for AI agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Rakesh K" }]
+dependencies = [
+  "fastapi>=0.141.1,<0.142",
+  "pydantic>=2.13.5,<3",
+  "uvicorn>=0.39,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.28,<1",
+  "mypy>=1.19.1,<2",
+  "pip-audit>=2.9,<3",
+  "pytest>=9.0.3,<10",
+  "pytest-cov>=7.1,<8",
+  "ruff>=0.16.6,<1",
+]
+
+[project.scripts]
+agent-guard = "agent_guard_eval.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_guard_eval"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+ignore = ["UP045"] # Optional is required because the package supports Python 3.9.
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+packages = ["agent_guard_eval"]
