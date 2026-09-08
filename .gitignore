@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.venv/
+.venv312/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+*.egg-info/
+audit.jsonl
